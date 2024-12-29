@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="project.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+
+   <div class="image">
+     <h1> <i class="fa-solid fa-clock"></i>  POMODORO TIMER</h1>
+
+
+
+      <div class="settings">
+         <button id="settingsIcon"><i class="fa-solid fa-gear"></i></button>
+         <div id="settingsModal" class="modal">
+             <div class="modal-content">
+                 <h2>Set Timer</h2>
+                 <label for="minutes">Minutes:</label>
+                 <input type="number" id="minutes" min="0" value="25">
+                 <button id="saveSettings">Save</button>
+                 <button id="closeSettings">Close</button>
+             </div>
+         </div>
+     </div>
+   </div>
+   <div class="container">
+      <div class="section.container">
+
+         <button id="studybtn" class="study-btn-timer">	&#128218;Study Time</button>
+         <button id="shortbtn" class="study-btn-timer">	 &#x1F6B6;Short Break</button>
+         <button id="longbtn" class="long-btn-timer">	&#128250; Long Break</button>
+      </div>
+
+      <div class="time-container">
+         <spna id="time"></spna>
+         <div class="btn-container">
+            <button id="start" class="show">Start</button>
+            <button id="stop" class="hide">Pause</button>
+            <button id="reset" class="hide"><i class="fa-solid fa-rotate-left"></i></button>
+         </div>
+
+      </div>
+
+   </div>
+
+  
+  
+
+   
+
+   
+   <script src="project.js"></script>
+</body>
+
+</html>

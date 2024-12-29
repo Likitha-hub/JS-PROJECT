@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+   <style>
+    body {
+    font-family:cursive;
+    background-color:#B3C8CF;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    }
+
+form {
+            background-color:#89A8B2; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px 30px;
+            width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+form label {
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    border-color: #5b9bd5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
+}
+
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #608BC1;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3a7abd;
+}
+.image{
+    position:relative;
+   
+}
+#signup{
+    position:absolute;
+}
+h1{
+    color:#146C94;
+}
+
+
+@media (max-width: 480px) {
+    form {
+        padding: 8px;
+    }
+
+    form label {
+        font-size: 15px;
+    }
+
+    form input {
+        font-size: 3px;
+        padding: 3px;
+    }
+
+    form button {
+        padding: 3px;
+        font-size: 3px;
+    }
+
+    form p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    form {
+        padding: 15px;
+        width: 100%;
+    }
+
+    form button {
+        font-size: 14px;
+    }
+
+    form input {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    form {
+        padding: 15px;
+        width: 100%;
+    }
+
+    form button {
+        font-size: 20px;
+    }
+
+    form input {
+        font-size: 20px;
+    }
+}
+</style>
+
+  
+
+</head>
+<body>
+
+
+          <div id="signup" >
+     <h1> <i class="fa-solid fa-clock"></i>  POMODORO TIMER</h1>
+            <form id="form"> 
+                <h2>Sign Up</h2>
+            <label for="name">USERNAME</label>
+            <input type="text" name="name" id="username" placeholder="Username" required>
+            <label for="email">EMAIL</label>
+            <input type="email" name="" id="email" placeholder="Email" required>
+            <label for="password">PASSWORD</label>
+            <input type="password" name="password" id="pswd" placeholder="Password" required>
+            <button id="btn1">Sign Up</button>
+    
+            
+          <p>Already have an account?<a href="./login.html" id="go-to-login">login</a></p>
+          </form>
+    
+          </div>
+        
+
+
+
+ 
+  <script >
+    const form = document.getElementById('form');
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('pswd');
+const submitButton = document.getElementById('btn1');
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('username')) {
+        usernameInput.value = localStorage.getItem('username');
+    }
+    if (localStorage.getItem('email')) {
+        emailInput.value = localStorage.getItem('email');
+    }
+   
+});
+
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+  
+    if (validateForm()) {
+      
+        localStorage.setItem('username', usernameInput.value);
+        localStorage.setItem('email', emailInput.value);
+        localStorage.setItem('password', passwordInput.value); 
+
+       
+        alert('Signup successful!');
+        window.location.href = "login.html";
+    }
+});
+
+
+function validateForm() {
+    let isValid = true;
+    
+ 
+    if (usernameInput.value.trim() === "") {
+        alert("Username is required!");
+        isValid = false;
+    }
+
+ 
+    if (!validateEmail(emailInput.value)) {
+        alert("Please enter a valid email!");
+        isValid = false;
+    }
+
+   
+    if (passwordInput.value.trim().length < 6) {
+        alert("Password must be at least 6 characters long!");
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+
+function validateEmail(email) {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailPattern.test(email);
+}
+
+const passwordToggle = document.createElement('button');
+passwordToggle.type = 'button';
+
+passwordToggle.addEventListener('click', function() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.textContent = 'Hide Password';
+    } else {
+        passwordInput.type = 'password';
+        passwordToggle.textContent = 'Show Password';
+    }
+});
+
+  </script>
+
+</body>
+</html>
